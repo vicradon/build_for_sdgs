@@ -17,8 +17,8 @@ const logger = ((req, res, next) => {
 
     fs.appendFile('./src/logs.txt', content, (err) => {
       if (err) {
+        // eslint-disable-next-line no-console
         console.error(err);
-        return
       }
     });
   });
