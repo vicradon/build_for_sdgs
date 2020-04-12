@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Covid-19 Estimator</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <nav>
+    <h1>Covid-19 Estimator</h1>
+  </nav>
+  <section id="form-section">
+    <h2>Estimator form</h2>
+    <form id="estimator-form" action="" method="post">
+      <label for="population-data">
+        <p>Populaiton data</p>
+        <input name="population-data" type="text" data-population>
+      </label>
+      <label for="time-to-elapse">
+        <p>Time to elapse</p>
+        <input name="time-to-elapse" type="text" data-time-to-elapse>
+      </label>
+      <label for="reported-cases">
+        <p>Reported cases</p>
+        <input name="reported-cases" type="text" data-reported-cases>
+      </label>
+      <label for="total-hospital-beds">
+        <p>Total hospital beds</p>
+        <input name="total-hospital-beds" type="text" data-total-hospital-beds>
+      </label>
+      <label for="period-type">
+        <p>Period Type</p>
+        <select data-period-type name="period-type" id="period-type">
+          <option value="days">days</option>
+          <option value="weeks">weeks</option>
+          <option value="months">months</option>
+        </select>
+      </label>
+      <div id="region-details">
+        <h4>Region details</h4>
+        <label for="region-name">
+          <p>Region name</p>
+          <select data-region-name name="region-name" id="region-name">
+            <option value="Africa">Africa</option>
+          </select>
+        </label>
+        <label for="average-daily-income-in-usd">
+          <p>Average daily income in USD</p>
+          <input name="average-daily-income-in-usd" type="number" data-average-daily-income-in-usd>
+        </label>
+        <label for="average-daily-income-population">
+          <p>Average daily income population</p>
+          <input name="average-daily-income-population" type="number" data-average-daily-income-population>
+        </label>
+      </div>
+      <button id="submit-estimator-form" type="submit" data-go-submit>Submit</button>
+    </form>
+  </section>
+  <p id="toast"></p>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+*, ::before, ::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --form-width: 400px;
+  --primary-color: rgb(0, 102, 255);
+  --primary-color-light: rgba(0, 102, 255, 0.6);
+}
+nav {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px;
+  position: fixed;
+  width: 100%;
+  top:0;
+  margin-bottom: 2rem;
+}
+#toast {
+  background-color: #646464;
+  color: white;
+  border-radius: 5px;
+  display: none;
+  position: fixed;
+  bottom: 10%;
+  padding: 10px;
+  text-align: center;
+  left: 40%;
+}
+
+#form-section {
+  width:var(--form-width);
+  margin: 1rem auto;
+}
+#form-section h2 {
+  color: var(--primary-color);
+  margin-top: 4rem;
+}
+
+#estimator-form label input, #estimator-form label select {
+  padding: 0.5rem 0.5rem;
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid var(--primary-color-light);
+}
+#estimator-form label p {
+  margin-top: 15px;
+}
+
+#estimator-form label p {
+  color: rgb(65, 64, 64);
+}
+
+#region-details {
+  margin-top: 2rem;
+}
+#region-details h4 {
+  color: var(--primary-color);
+}
+
+#submit-estimator-form {
+  width: 100px;
+  cursor: pointer;
+  margin: 1rem auto;
+  border: 1px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+}
+#submit-estimator-form:hover {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+@media (max-width:450px){
+  :root {
+    --form-width: calc(100vw - 50px);
+  }
+}
