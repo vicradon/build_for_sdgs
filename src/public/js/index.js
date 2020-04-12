@@ -33,7 +33,7 @@ $('#estimator-form').onsubmit = (e) => {
     totalHospitalBeds: getVal('total-hospital-beds'),
     periodType: getVal('period-type')
   };
-  const url = 'http://covid-19-estimator1.herokuapp.com/';
+  const url = 'http://covid-19-estimator1.herokuapp.com/api/v1/on-covid-19';
   $('.loader').style.display = 'block';
   $('#submit-estimator-form').disabled = true;
   fetch(url, {
