@@ -26,7 +26,7 @@ const covid19ImpactEstimator = (data) => {
     }
   };
   // This function implies that the number of infections double in 3 days successions
-  const doublingFactor = (tte, pt) => Math.round(getTimeInDays(tte, pt) / 3);
+  const doublingFactor = (tte, pt) => Math.trunc(getTimeInDays(tte, pt) / 3);
 
   // This funcition finalises the number of infected cases after a time period
   const infectedFactor = (tte, pt) => 2 ** doublingFactor(tte, pt);
@@ -34,27 +34,27 @@ const covid19ImpactEstimator = (data) => {
   const infectionsByRequestedTimeN = currentlyInfectedN * infectedFactor(timeToElapse, periodType);
   const infectionsByRequestedTimeS = currentlyInfectedS * infectedFactor(timeToElapse, periodType);
 
-  const severeCasesByRequestedTimeN = Math.round(infectionsByRequestedTimeN * 0.15);
-  const severeCasesByRequestedTimeS = Math.round(infectionsByRequestedTimeS * 0.15);
+  const severeCasesByRequestedTimeN = Math.trunc(infectionsByRequestedTimeN * 0.15);
+  const severeCasesByRequestedTimeS = Math.trunc(infectionsByRequestedTimeS * 0.15);
 
-  const hospitalBedsByRequestedTimeN = Math.round(
-    0.35 * totalHospitalBeds * severeCasesByRequestedTimeN
-  );
-  const hospitalBedsByRequestedTimeS = Math.round(
-    0.35 * totalHospitalBeds * severeCasesByRequestedTimeS
-  );
+  const hospitalBedsByRequestedTimeN = Math.trunc(
+    0.35 * totalHospitalBeds
+  ) - severeCasesByRequestedTimeN;
+  const hospitalBedsByRequestedTimeS = Math.trunc(
+    0.35 * totalHospitalBeds
+  ) - severeCasesByRequestedTimeS;
 
-  const casesForICUByRequestedTimeN = Math.round(infectionsByRequestedTimeN * 0.05);
-  const casesForICUByRequestedTimeS = Math.round(infectionsByRequestedTimeS * 0.05);
+  const casesForICUByRequestedTimeN = Math.trunc(infectionsByRequestedTimeN * 0.05);
+  const casesForICUByRequestedTimeS = Math.trunc(infectionsByRequestedTimeS * 0.05);
 
-  const casesForVentilatorsByRequestedTimeN = Math.round(infectionsByRequestedTimeN * 0.02);
-  const casesForVentilatorsByRequestedTimeS = Math.round(infectionsByRequestedTimeS * 0.02);
+  const casesForVentilatorsByRequestedTimeN = Math.trunc(infectionsByRequestedTimeN * 0.02);
+  const casesForVentilatorsByRequestedTimeS = Math.trunc(infectionsByRequestedTimeS * 0.02);
 
-  const dollarsInFlightN = Math.round(
+  const dollarsInFlightN = Math.trunc(
     (infectionsByRequestedTimeN * avgDailyIncomeInUSD * avgDailyIncomePopulation)
     / getTimeInDays(timeToElapse, periodType)
   );
-  const dollarsInFlightS = Math.round(
+  const dollarsInFlightS = Math.trunc(
     (infectionsByRequestedTimeS * avgDailyIncomeInUSD * avgDailyIncomePopulation)
     / getTimeInDays(timeToElapse, periodType)
   );
