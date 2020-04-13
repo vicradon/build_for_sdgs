@@ -26,7 +26,9 @@ const covid19ImpactEstimator = (data) => {
     }
   };
 
-  const infectedFactor = (tte, pt) => Math.round(2 ** (getTimeInDays(tte, pt) / 3));
+  const doublingFactor = (tte, pt) => Math.round(getTimeInDays(tte, pt) / 3);
+
+  const infectedFactor = (tte, pt) => 2 ** doublingFactor(tte, pt);
 
   const infectionsByRequestedTimeN = currentlyInfectedN * infectedFactor(timeToElapse, periodType);
   const infectionsByRequestedTimeS = currentlyInfectedS * infectedFactor(timeToElapse, periodType);
