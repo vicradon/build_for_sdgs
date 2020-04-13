@@ -31,8 +31,12 @@ const covid19ImpactEstimator = (data) => {
   // This funcition finalises the number of infected cases after a time period
   const infectedFactor = (tte, pt) => Math.trunc(2 ** doublingFactor(tte, pt));
 
-  const infectionsByRequestedTimeN = currentlyInfectedN * infectedFactor(timeToElapse, periodType);
-  const infectionsByRequestedTimeS = currentlyInfectedS * infectedFactor(timeToElapse, periodType);
+  const infectionsByRequestedTimeN = Math.trunc(
+    currentlyInfectedN * infectedFactor(timeToElapse, periodType)
+  );
+  const infectionsByRequestedTimeS = Math.trunc(
+    currentlyInfectedS * infectedFactor(timeToElapse, periodType)
+  );
 
   const severeCasesByRequestedTimeN = Math.trunc(infectionsByRequestedTimeN * 0.15);
   const severeCasesByRequestedTimeS = Math.trunc(infectionsByRequestedTimeS * 0.15);
