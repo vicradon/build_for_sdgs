@@ -25,77 +25,80 @@ app.post('/api/v1/on-covid-19', (req, res) => {
 });
 
 app.post('/api/v1/on-covid-19/json', (req, res) => {
+  res.header('Content-Type', 'application/json');
   res.send(covid19ImpactEstimator(req.body));
 });
-app.get('/api/v1/on-covid-19/json' || '/api/v1/on-covid-19', (req, res) => {
-  if (!req.body === null) {
-    res.send(covid19ImpactEstimator(req.body));
-  } else {
-    res.send(covid19ImpactEstimator({
-      region: {
-        name: 'Africa',
-        avgAge: 19.7,
-        avgDailyIncomeInUSD: 5,
-        avgDailyIncomePopulation: 0.71
-      },
-      periodType: 'days',
-      timeToElapse: 58,
-      reportedCases: 674,
-      population: 66622705,
-      totalHospitalBeds: 1380614
-    }));
-  }
-});
-app.get('/api/v1/on-covid-19', (req, res) => {
-  if (!req.body === null) {
-    res.send(covid19ImpactEstimator(req.body));
-  } else {
-    res.send(covid19ImpactEstimator({
-      region: {
-        name: 'Africa',
-        avgAge: 19.7,
-        avgDailyIncomeInUSD: 5,
-        avgDailyIncomePopulation: 0.71
-      },
-      periodType: 'days',
-      timeToElapse: 58,
-      reportedCases: 674,
-      population: 66622705,
-      totalHospitalBeds: 1380614
-    }));
-  }
-});
-app.get('/api/v1/on-covid-19/xml', (req, res) => {
-  if (!req.body === null) {
-    const input = covid19ImpactEstimator(req.body);
-    const response = js2xmlparser.parse('estimate', input);
-    res.send(response);
-  } else {
-    const input = {
-      region: {
-        name: 'Africa',
-        avgAge: 19.7,
-        avgDailyIncomeInUSD: 5,
-        avgDailyIncomePopulation: 0.71
-      },
-      periodType: 'days',
-      timeToElapse: 58,
-      reportedCases: 674,
-      population: 66622705,
-      totalHospitalBeds: 1380614
-    };
-    const response = js2xmlparser.parse('estimate', input);
-    res.send(`${response}`);
-  }
-});
+
+// app.get('/api/v1/on-covid-19/json', (req, res) => {
+//   if (!req.body === null) {
+//     res.send(covid19ImpactEstimator(req.body));
+//   } else {
+//     res.send(covid19ImpactEstimator({
+//       region: {
+//         name: 'Africa',
+//         avgAge: 19.7,
+//         avgDailyIncomeInUSD: 5,
+//         avgDailyIncomePopulation: 0.71
+//       },
+//       periodType: 'days',
+//       timeToElapse: 58,
+//       reportedCases: 674,
+//       population: 66622705,
+//       totalHospitalBeds: 1380614
+//     }));
+//   }
+// });
+// app.get('/api/v1/on-covid-19', (req, res) => {
+//   if (!req.body === null) {
+//     res.send(covid19ImpactEstimator(req.body));
+//   } else {
+//     res.send(covid19ImpactEstimator({
+//       region: {
+//         name: 'Africa',
+//         avgAge: 19.7,
+//         avgDailyIncomeInUSD: 5,
+//         avgDailyIncomePopulation: 0.71
+//       },
+//       periodType: 'days',
+//       timeToElapse: 58,
+//       reportedCases: 674,
+//       population: 66622705,
+//       totalHospitalBeds: 1380614
+//     }));
+//   }
+// });
+// app.get('/api/v1/on-covid-19/xml', (req, res) => {
+//   if (!req.body === null) {
+//     const input = covid19ImpactEstimator(req.body);
+//     const response = js2xmlparser.parse('estimate', input);
+//     res.send(response);
+//   } else {
+//     const input = {
+//       region: {
+//         name: 'Africa',
+//         avgAge: 19.7,
+//         avgDailyIncomeInUSD: 5,
+//         avgDailyIncomePopulation: 0.71
+//       },
+//       periodType: 'days',
+//       timeToElapse: 58,
+//       reportedCases: 674,
+//       population: 66622705,
+//       totalHospitalBeds: 1380614
+//     };
+//     const response = js2xmlparser.parse('estimate', input);
+//     res.send(`${response}`);
+//   }
+// });
 
 app.post('/api/v1/on-covid-19/xml', (req, res) => {
+  res.header('Content-Type', 'application/xml');
   const input = covid19ImpactEstimator(req.body);
   const response = js2xmlparser.parse('estimate', input);
   res.send(response);
 });
 
-app.get('/logs', (_, res) => {
+app.get('/api/v1/on-covid-19/logs', (_, res) => {
   res.sendFile(path.join(__dirname, './src', 'logs.txt'));
 });
 
