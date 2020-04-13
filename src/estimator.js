@@ -9,8 +9,8 @@ const covid19ImpactEstimator = (data) => {
       avgDailyIncomePopulation
     }
   } = data;
-  const currentlnfectedN = reportedCases * 10;
-  const currentlnfectedS = reportedCases * 50;
+  const currentlyInfectedN = reportedCases * 10;
+  const currentlyInfectedS = reportedCases * 50;
 
 
   const getTimeInDays = (tte, pt) => {
@@ -34,8 +34,8 @@ const covid19ImpactEstimator = (data) => {
   // };
 
 
-  const infectionsByRequestedTimeN = currentlnfectedN * getTimeToDouble(timeToElapse, periodType);
-  const infectionsByRequestedTimeS = currentlnfectedS * getTimeToDouble(timeToElapse, periodType);
+  const infectionsByRequestedTimeN = currentlyInfectedN * getTimeToDouble(timeToElapse, periodType);
+  const infectionsByRequestedTimeS = currentlyInfectedS * getTimeToDouble(timeToElapse, periodType);
 
   const severeCasesByRequestedTimeN = Math.round(infectionsByRequestedTimeN * 0.15);
   const severeCasesByRequestedTimeS = Math.round(infectionsByRequestedTimeS * 0.15);
@@ -64,7 +64,7 @@ const covid19ImpactEstimator = (data) => {
 
 
   const impact = {
-    currentlnfected: currentlnfectedN,
+    currentlyInfected: currentlyInfectedN,
     infectionsByRequestedTime: infectionsByRequestedTimeN,
     severeCasesByRequestedTime: severeCasesByRequestedTimeN,
     hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeN,
@@ -73,7 +73,7 @@ const covid19ImpactEstimator = (data) => {
     dollarsInFlight: `$${dollarsInFlightN}`
   };
   const severeImpact = {
-    currentlnfected: currentlnfectedS,
+    currentlyInfected: currentlyInfectedS,
     infectionsByRequestedTime: infectionsByRequestedTimeS,
     severeCasesByRequestedTime: severeCasesByRequestedTimeS,
     hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeS,
