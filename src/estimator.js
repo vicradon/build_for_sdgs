@@ -14,7 +14,7 @@ const covid19ImpactEstimator = (data) => {
 
   // ttt = timeToElapse pt = periodType
   const getTimeInDays = (tte, pt) => {
-    if (pt === 'weeks') {
+    if (pt === 'week') {
       return tte * 7;
     }
     if (pt === 'months') {
