@@ -25,9 +25,10 @@ const covid19ImpactEstimator = (data) => {
         return tte;
     }
   };
-
+  // This function implies that the number of infections double in 3 days successions
   const doublingFactor = (tte, pt) => Math.round(getTimeInDays(tte, pt) / 3);
 
+  // This funcition finalises the number of infected cases after a time period
   const infectedFactor = (tte, pt) => 2 ** doublingFactor(tte, pt);
 
   const infectionsByRequestedTimeN = currentlyInfectedN * infectedFactor(timeToElapse, periodType);
