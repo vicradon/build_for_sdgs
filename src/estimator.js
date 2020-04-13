@@ -14,13 +14,16 @@ const covid19ImpactEstimator = (data) => {
 
   // ttt = timeToElapse pt = periodType
   const getTimeInDays = (tte, pt) => {
-    if (pt === 'week') {
-      return tte * 7;
+    switch (pt) {
+      case 'days':
+        return tte;
+      case 'weeks':
+        return tte * 7;
+      case 'months':
+        return tte * 30;
+      default:
+        return tte;
     }
-    if (pt === 'months') {
-      return tte * 30;
-    }
-    return tte;
   };
 
   const infectedFactor = (tte, pt) => Math.round(2 ** (getTimeInDays(tte, pt) / 3));
