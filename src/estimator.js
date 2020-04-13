@@ -22,7 +22,7 @@ const covid19ImpactEstimator = (data) => {
       case 'months':
         return tte * 30;
       default:
-        return tte;
+        throw new Error('Invalid argument, period type must be in either days, weeks or months');
     }
   };
   // This function implies that the number of infections double in 3 days successions
@@ -37,12 +37,12 @@ const covid19ImpactEstimator = (data) => {
   const severeCasesByRequestedTimeN = Math.trunc(infectionsByRequestedTimeN * 0.15);
   const severeCasesByRequestedTimeS = Math.trunc(infectionsByRequestedTimeS * 0.15);
 
-  const hospitalBedsByRequestedTimeN = Math.trunc(
+  const hospitalBedsByRequestedTimeN = Math.trunc((
     0.35 * totalHospitalBeds
-  ) - severeCasesByRequestedTimeN;
-  const hospitalBedsByRequestedTimeS = Math.trunc(
+  ) - severeCasesByRequestedTimeN);
+  const hospitalBedsByRequestedTimeS = Math.trunc((
     0.35 * totalHospitalBeds
-  ) - severeCasesByRequestedTimeS;
+  ) - severeCasesByRequestedTimeS);
 
   const casesForICUByRequestedTimeN = Math.trunc(infectionsByRequestedTimeN * 0.05);
   const casesForICUByRequestedTimeS = Math.trunc(infectionsByRequestedTimeS * 0.05);
