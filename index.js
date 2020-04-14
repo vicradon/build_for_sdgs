@@ -44,5 +44,5 @@ app.get('/api/v1/on-covid-19/logs', (_, res) => {
 
 app.listen(process.env.PORT || 7000, () => {
   // eslint-disable-next-line no-console
-  console.log('server running on port 7000', 'http://localhost:7000', '');
+  console.log('server running on port 7000', 'http://localhost:7000');
 });
