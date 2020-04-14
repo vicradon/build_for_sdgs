@@ -39,6 +39,8 @@ app.post('/api/v1/on-covid-19/xml', (req, res) => {
 });
 
 app.get('/api/v1/on-covid-19/logs', (_, res) => {
+  res.header('Content-Type', 'text/plain');
+  res.type('text/plain');
   res.sendFile(path.join(__dirname, './src', 'logs.txt'));
 });
 
