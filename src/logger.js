@@ -15,7 +15,7 @@ const logger = ((req, res, next) => {
 
   res.on('finish', () => {
     const durationInMilliseconds = getDurationInMilliseconds(start);
-    const content = (`${req.method}\t\t${req.originalUrl}\t\t${res.statusCode}\t\t${durationInMilliseconds.toLocaleString()} ms\n`);
+    const content = (`${req.method}\t\t${req.originalUrl}\t\t${res.statusCode}\t\t${durationInMilliseconds.toLocaleString()}ms\n`);
 
     fs.appendFile('./src/logs.txt', content, (err) => {
       if (err) {
