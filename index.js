@@ -25,13 +25,11 @@ app.post('/api/v1/on-covid-19', (req, res) => {
 });
 
 app.post('/api/v1/on-covid-19/json', (req, res) => {
-  res.header('Content-Type', 'application/json');
   res.type('application/json');
   res.send(covid19ImpactEstimator(req.body));
 });
 
 app.post('/api/v1/on-covid-19/xml', (req, res) => {
-  res.header('Content-Type', 'application/xml');
   res.type('application/xml');
   const input = covid19ImpactEstimator(req.body);
   const response = js2xmlparser.parse('estimate', input);
