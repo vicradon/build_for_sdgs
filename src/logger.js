@@ -5,7 +5,9 @@ const getDurationInMilliseconds = (start) => {
   const NS_TO_MS = 1e6;
   const diff = process.hrtime(start);
 
-  return (diff[0] * NS_PER_SEC + diff[1]) / NS_TO_MS;
+  const timeDiff = Math.trunc((diff[0] * NS_PER_SEC + diff[1]) / NS_TO_MS).toString();
+  if (timeDiff.length === 1) return `0${timeDiff}`;
+  return timeDiff;
 };
 
 const logger = ((req, res, next) => {
